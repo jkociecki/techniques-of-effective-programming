@@ -1,0 +1,7 @@
+# ninja log v5
+9	707	7227982939912925	CMakeFiles/lab02f.dir/main.cpp.obj	e3345632716fb93f
+792	902	7227982941819228	lab02f.exe	bbeb39f1f5da59a3
+1	264	7227985429899949	build.ninja	13e433983e437dae
+14	619	7227982939033085	CMakeFiles/lab02f.dir/src/CNumber/CNumberMathOperations.cpp.obj	6938a56f9bca7af6
+26	676	7227982939598843	CMakeFiles/lab02f.dir/src/CNumber/CNumberOperators.cpp.obj	268d3e9aae916787
+20	792	7227982940765419	CMakeFiles/lab02f.dir/src/CNumber/CNumber.cpp.obj	7a5ba525186bebd1

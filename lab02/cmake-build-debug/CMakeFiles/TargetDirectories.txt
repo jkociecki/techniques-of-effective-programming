@@ -1,0 +1,3 @@
+C:/Users/Flex 5 IIL/OneDrive/Desktop/studia/semestr 3/TEP/lab02f/cmake-build-debug/CMakeFiles/lab02f.dir
+C:/Users/Flex 5 IIL/OneDrive/Desktop/studia/semestr 3/TEP/lab02f/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Flex 5 IIL/OneDrive/Desktop/studia/semestr 3/TEP/lab02f/cmake-build-debug/CMakeFiles/rebuild_cache.dir

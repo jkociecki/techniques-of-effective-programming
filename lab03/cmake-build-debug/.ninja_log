@@ -1,0 +1,13 @@
+# ninja log v5
+4715	5353	7238504626047606	teplab03final.exe	630bb1e6d99cdf80
+6	4181	7238504612730296	CMakeFiles/teplab03final.dir/main.cpp.obj	fe15525bba23aab0
+29	2552	7238504597268658	CMakeFiles/teplab03final.dir/src/ExpressionTreeSrc/Node.cpp.obj	93c465cba8b740af
+16	697	7236663905834090	CMakeFiles/teplab03final.dir/src/StringUtils.cpp.obj	be92ba2f2d24daf1
+23	4178	7238504611802279	CMakeFiles/teplab03final.dir/src/UI.cpp.obj	a0d37c7c53366373
+15	4715	7238504619769979	CMakeFiles/teplab03final.dir/src/ExpressionTreeSrc/ExpressionTree.cpp.obj	287dbbb3d2f53033
+32	1125	7238508463759078	CMakeFiles/teplab03final.dir/src/StringUtils.cpp.obj	470f5321a1762390
+18	1152	7238508464054178	CMakeFiles/teplab03final.dir/src/ExpressionTreeSrc/Node.cpp.obj	c3999560dad761e4
+6	1407	7238508466610093	CMakeFiles/teplab03final.dir/main.cpp.obj	c410cb23f913abd4
+25	1612	7238508468665919	CMakeFiles/teplab03final.dir/src/UI.cpp.obj	a889b8984f01803f
+12	1765	7238508470185519	CMakeFiles/teplab03final.dir/src/ExpressionTreeSrc/ExpressionTree.cpp.obj	8d86c825987cc441
+1765	1971	7238508472226573	teplab03final.exe	630bb1e6d99cdf80
