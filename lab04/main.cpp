@@ -1,6 +1,10 @@
 #include <iostream>
+#include "include/ExpressionTreeHeaders/ExpressionTree.h"
+#include "include/StringUtils.h"
+#include "include/UI.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    run();
     return 0;
 }
