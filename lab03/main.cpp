@@ -1,5 +1,4 @@
 #include <iostream>
-#include <unordered_map>
 #include "include/ExpressionTreeHeaders/ExpressionTree.h"
 #include "include/StringUtils.h"
 #include "include/UI.h"
