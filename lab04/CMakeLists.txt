@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.26)
-project(lab03dziedzic)
+project(lab04)
 
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(
-        lab03dziedzic main.cpp
+        lab04 main.cpp
         inclulde/CNode.h
         inclulde/CNodeOneArguemnt.h
         src/CNodeOneArgument.cpp

@@ -157,7 +157,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=lab03dziedzic
+CMAKE_PROJECT_NAME:STATIC=lab04
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/ranlib.exe
@@ -247,6 +247,15 @@ lab03dziedzic_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 lab03dziedzic_SOURCE_DIR:STATIC=C:/Users/Flex 5 IIL/OneDrive/Desktop/studia/semestr 3/TEP/lab04
+
+//Value Computed by CMake
+lab04_BINARY_DIR:STATIC=C:/Users/Flex 5 IIL/OneDrive/Desktop/studia/semestr 3/TEP/lab04/cmake-build-debug
+
+//Value Computed by CMake
+lab04_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+lab04_SOURCE_DIR:STATIC=C:/Users/Flex 5 IIL/OneDrive/Desktop/studia/semestr 3/TEP/lab04
 
 
 ########################
