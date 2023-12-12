@@ -1,3 +1,10 @@
 # ninja log v5
 576	753	7240940730931849	lab03dziedzic.exe	3c543fb214bfc256
 1	186	7241125183621906	build.ninja	4594f26552a838d
+15	855	7241125521584668	CMakeFiles/lab04.dir/src/CLeaf.cpp.obj	ac9ba62fb63f3897
+31	860	7241125521584668	CMakeFiles/lab04.dir/src/CVariable.cpp.obj	7c0c32a28e0c869f
+1	908	7241125522081692	CMakeFiles/lab04.dir/main.cpp.obj	c73d07eb56aaa91e
+11	939	7241125522455255	CMakeFiles/lab04.dir/src/CNodeTwoArguments.cpp.obj	46f7b7e8514497f6
+20	996	7241125523016687	CMakeFiles/lab04.dir/src/CTree.cpp.obj	d0b35e35b7997543
+6	1043	7241125523493371	CMakeFiles/lab04.dir/src/CNodeOneArgument.cpp.obj	64e9214adb9a808a
+1044	1173	7241125524741992	lab04.exe	30fd14d09ecefc5f
