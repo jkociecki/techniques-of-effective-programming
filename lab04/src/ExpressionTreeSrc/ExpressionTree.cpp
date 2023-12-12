@@ -137,13 +137,13 @@ ExpressionTree ExpressionTree::operator+(const ExpressionTree& tree) const
     Node* second_tree_node = new Node(*tree.root);
     if (is_variable(result_parent->get_child(0)->data))
     {
-        delete result_parent->children->at(0);
-        result_parent->children->at(0) = second_tree_node;
+        delete result_parent->children.at(0);
+        result_parent->children.at(0) = second_tree_node;
     }
     else
     {
-        delete result_parent->children->at(1);
-        result_parent->children->at(1) = second_tree_node;
+        delete result_parent->children.at(1);
+        result_parent->children.at(1) = second_tree_node;
     }
 
     return result;

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/lab04.iml" filepath="$PROJECT_DIR$/.idea/lab04.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/teplab03final.iml" filepath="$PROJECT_DIR$/.idea/teplab03final.iml" />
     </modules>
   </component>

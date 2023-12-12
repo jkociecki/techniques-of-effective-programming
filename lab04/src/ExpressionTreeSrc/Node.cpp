@@ -2,27 +2,23 @@
 #include <vector>
 #include <iostream>
 
-Node::Node() : data("") {children = new std::vector<Node*>();}
+Node::Node() : data("") {children = std::vector<Node*>();}
 
-Node::Node(std::string data) : data(data) {children = new std::vector<Node*>();}
+Node::Node(std::string data) : data(data) {children = std::vector<Node*>();}
 
-Node::Node(const Node& other) : data(other.data), value(other.value), children(nullptr)
+Node::Node(const Node& other) : data(other.data), value(other.value)
 {
-    if (other.children != nullptr) {
-        children = new std::vector<Node*>();
-        for (Node* child : *other.children) {
-            children->push_back(new Node(*child));
+        for (Node* child : other.children) {
+            children.push_back(new Node(*child));
         }
-    }
 }
 
 Node::~Node()
 {
-    for(Node* child : *children)
+    for(Node* child : children)
     {
         delete child;
     }
-    delete children;
 }
 
 
@@ -30,7 +26,7 @@ void Node::create_children(int amount)
 {
     for(int i = 0; i < amount; i++)
     {
-        (*children).push_back(new Node());
+        children.push_back(new Node());
     }
 }
 
@@ -44,9 +40,9 @@ void Node::setData(std::string data_a)
 
 Node* Node::get_child(int index) const
 {
-    if(index < (*children).size())
+    if(index < children.size())
     {
-        return (*children)[index];
+        return children[index];
     }
     else
     {

@@ -6,7 +6,7 @@
 class Node{
 private:
     std::string data;
-    std::vector<Node*>* children;
+    std::vector<Node*> children;
     int value;
 
     Node();

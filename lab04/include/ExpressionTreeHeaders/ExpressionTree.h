@@ -8,7 +8,6 @@
 #include <map>
 #include <unordered_map>
 
-
 class ExpressionTree {
 
 private:
@@ -16,9 +15,7 @@ private:
     Node* root;
 
     Node* get_parent_of_leaf(Node* root, Node* parent) const;
-
     double evaluate_tree_recursive(const Node* root) const;
-
     void create_tree(std::vector<std::string>& tokens, Node* root, bool& if_error);
     void create_prefix(const Node* root, std::string& result) const;
     void create_vars(const Node* root, std::set<std::string>& result) const;
