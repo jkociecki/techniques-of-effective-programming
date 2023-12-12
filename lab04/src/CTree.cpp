@@ -11,12 +11,28 @@ CTree::CTree(const std::string& expression)
     {
         tokens.push_back(token);
     }
-    root = createTreeRecursive(tokens);
+    bool isExpressionCorrect = true;
+    root = createTreeRecursive(tokens, isExpressionCorrect);
+
+    if(!isExpressionCorrect || !tokens.empty())
+    {
+        std::cout << "CORRECTED EXPRESSION: " << toString() << std::endl;
+    }
+}
+
+CTree::CTree(const CTree &other)
+{
+    root = other.root->clone();
 }
 
 double CTree::evaluate() const
 {
     return root->evaluate();
+}
+
+CTree::~CTree()
+{
+    delete root;
 }
 
 void CTree::initializeVariables(CNode* root_a, std::vector<std::string> &expression)
@@ -42,35 +58,51 @@ void CTree::initializeVariables(CNode* root_a, std::vector<std::string> &express
     }
 }
 
+void CTree::createPrefix(CNode *root_a, std::string &result) const
+{
+    result += " " + root_a->toString();
+    if(!root_a->getVariables().empty())
+    {
+        for(CNode* child : root_a->getVariables())
+        {
+            createPrefix(child, result);
+        }
+    }
+}
 
+std::string CTree::toString() const
+{
+    std::string result;
+    createPrefix(root, result);
+    return result;
+}
 
-CNode* CTree::createTreeRecursive(std::vector<std::string>& expression)
+CNode* CTree::createTreeRecursive(std::vector<std::string>& expression, bool& ifError)
 {
     if (expression.empty())
     {
-        return nullptr;
+        ifError = false;
+        return new CLeaf(1);
     }
 
 
     std::string token = expression.front();
     expression.erase(expression.begin());
+
     if (isOperatorTwoArgument(token))
     {
-        CNode* left = createTreeRecursive(expression);
-        CNode* right = createTreeRecursive(expression);
+        CNode* left = createTreeRecursive(expression, ifError);
+        CNode* right = createTreeRecursive(expression, ifError);
         return new CNodeTwoArguments(token, left, right);
     }
     else if (isOperatorOneArgument(token))
     {
-        CNode* child = createTreeRecursive(expression);
+        CNode* child = createTreeRecursive(expression, ifError);
         return new CNodeOneArgument(token, child);
     }
     else if (isNumber(token))
     {
-        std::stringstream ss(token);
-        double value;
-        ss >> value;
-        return new CLeaf(value);
+        return new CLeaf(std::stod(token));
     }
     else
     {
@@ -78,6 +110,40 @@ CNode* CTree::createTreeRecursive(std::vector<std::string>& expression)
     }
 }
 
+CTree CTree::operator+(const CTree &other) const
+{
+    CTree result(*this);
+    CNode* parent = result.root;
+    CNode* test = nullptr;
+    while(!parent->getVariables().empty())
+    {
+        test = parent;
+        parent = parent->getVariables()[0];
+    }
+
+    if(dynamic_cast<CNodeOneArgument*>(test) != nullptr)
+    {
+       CNodeOneArgument* res = dynamic_cast<CNodeOneArgument*>(test);
+       res->child = other.root->clone();
+    }
+    else if(dynamic_cast<CNodeTwoArguments*>(test) != nullptr)
+    {
+        CNodeTwoArguments* res = dynamic_cast<CNodeTwoArguments*>(test);
+        res->left = other.root->clone();
+    }
+    return result;
+}
+
+
+CTree& CTree::operator=(const CTree &other)
+{
+    if(this != &other)
+    {
+        delete root;
+        root = other.root->clone();
+    }
+    return *this;
+}
 
 
 bool CTree::isOperatorTwoArgument(const std::string &token)
@@ -102,6 +168,9 @@ bool CTree::isOperatorOneArgument(const std::string &token)
 {
     return token == "sin" || token == "cos";
 }
+
+
+
 
 
 

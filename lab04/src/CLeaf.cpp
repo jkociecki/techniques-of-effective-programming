@@ -15,3 +15,7 @@ std::vector<CNode*> CLeaf::getVariables() const
     return {};
 }
 
+CLeaf* CLeaf::clone() const
+{
+    return new CLeaf(*this);
+}

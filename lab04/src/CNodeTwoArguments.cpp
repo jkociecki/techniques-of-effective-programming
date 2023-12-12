@@ -28,3 +28,8 @@ CNodeTwoArguments::~CNodeTwoArguments()
     delete left;
     delete right;
 }
+
+CNodeTwoArguments* CNodeTwoArguments::clone() const
+{
+    return new CNodeTwoArguments(*this);
+}

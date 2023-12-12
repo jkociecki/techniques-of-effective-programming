@@ -23,3 +23,8 @@ CNodeOneArgument::~CNodeOneArgument()
 {
     delete child;
 }
+
+CNodeOneArgument* CNodeOneArgument::clone() const
+{
+    return new CNodeOneArgument(*this);
+}
