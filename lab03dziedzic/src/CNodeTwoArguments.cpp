@@ -17,3 +17,14 @@ std::string CNodeTwoArguments::toString() const
 {
     return operatation;
 }
+
+std::vector<CNode*> CNodeTwoArguments::getVariables() const
+{
+    return std::vector<CNode*>() = {left, right};
+}
+
+CNodeTwoArguments::~CNodeTwoArguments()
+{
+    delete left;
+    delete right;
+}

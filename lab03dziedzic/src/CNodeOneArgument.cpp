@@ -13,3 +13,13 @@ std::string CNodeOneArgument::toString() const
 {
     return operatation;
 }
+
+std::vector<CNode*> CNodeOneArgument::getVariables() const
+{
+    return std::vector<CNode*>() = {child};
+}
+
+CNodeOneArgument::~CNodeOneArgument()
+{
+    delete child;
+}

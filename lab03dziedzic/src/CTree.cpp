@@ -19,6 +19,29 @@ double CTree::evaluate() const
     return root->evaluate();
 }
 
+void CTree::initializeVariables(CNode* root_a, std::vector<std::string> &expression)
+{
+    if(root_a == nullptr) return;
+    CVariable* var = dynamic_cast<CVariable*>(root_a);
+    if(var != nullptr)
+    {
+        if(!expression.empty())
+        {
+            std::string token = expression.front();
+            expression.erase(expression.begin());
+            std::stringstream ss(token);
+            double value = std::stod(token);
+            var->value = value;
+        }
+        return;
+    }
+    std::vector<CNode*> children = root_a->getVariables();
+    for(CNode* child : children)
+    {
+        initializeVariables(child, expression);
+    }
+}
+
 
 
 CNode* CTree::createTreeRecursive(std::vector<std::string>& expression)

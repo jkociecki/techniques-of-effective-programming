@@ -12,6 +12,8 @@ public:
     double evaluate() const override;
     std::string toString() const override;
     CNodeOneArgument(std::string op, CNode* child) : operatation(op), child(child) {};
+    std::vector<CNode*> getVariables() const override;
+    ~CNodeOneArgument() override;
 
 
 };

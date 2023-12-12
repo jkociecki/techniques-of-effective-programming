@@ -9,3 +9,8 @@ std::string CVariable::toString() const
 {
     return name;
 }
+
+std::vector<CNode*> CVariable::getVariables() const
+{
+    return {};
+}

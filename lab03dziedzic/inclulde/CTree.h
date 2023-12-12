@@ -19,9 +19,9 @@ public:
     static bool isOperatorOneArgument(const std::string& token);
     static bool isOperatorTwoArgument(const std::string& token);
     static bool isNumber(const std::string& token);
-    void initializeVariables(std::vector<std::string>& expression);
+    void initializeVariables(CNode* root_a, std::vector<std::string>& expression);
     double evaluate() const;
-    static bool isVariable(const std::string& token);
+    static bool isVariable(CNode* cnode, const std::string& token);
 
 
 };

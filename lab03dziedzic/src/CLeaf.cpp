@@ -9,3 +9,9 @@ std::string CLeaf::toString() const
 {
     return std::to_string(value);
 }
+
+std::vector<CNode*> CLeaf::getVariables() const
+{
+    return {};
+}
+
