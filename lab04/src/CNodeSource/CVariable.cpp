@@ -1,4 +1,4 @@
-#include "../inclulde/CVariable.h"
+#include "../../inclulde/CNodeHeaders/CVariable.h"
 
 double CVariable::evaluate() const
 {

@@ -35,7 +35,7 @@ CTree::~CTree()
     delete root;
 }
 
-void CTree::initializeVariables(CNode* root_a, std::vector<std::string> &expression)
+void CTree::initializeVariablesRecursive(CNode* root_a, std::vector<std::string> &expression)
 {
     if(root_a == nullptr) return;
     CVariable* var = dynamic_cast<CVariable*>(root_a);
@@ -54,7 +54,7 @@ void CTree::initializeVariables(CNode* root_a, std::vector<std::string> &express
     std::vector<CNode*> children = root_a->getVariables();
     for(CNode* child : children)
     {
-        initializeVariables(child, expression);
+        initializeVariablesRecursive(child, expression);
     }
 }
 
@@ -167,6 +167,11 @@ bool CTree::isNumber(const std::string &token)
 bool CTree::isOperatorOneArgument(const std::string &token)
 {
     return token == "sin" || token == "cos";
+}
+
+void CTree::initializeVariables(std::vector<std::string> &expression)
+{
+    initializeVariablesRecursive(root, expression);
 }
 
 

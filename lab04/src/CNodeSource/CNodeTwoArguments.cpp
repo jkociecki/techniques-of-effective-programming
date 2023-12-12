@@ -1,4 +1,4 @@
-#include "../inclulde/CNodeTwoArguments.h"
+#include "../../inclulde/CNodeHeaders/CNodeTwoArguments.h"
 
 double CNodeTwoArguments::evaluate() const {
     double left_value = left->evaluate();

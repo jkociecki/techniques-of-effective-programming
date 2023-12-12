@@ -1,4 +1,4 @@
-#include "../inclulde/CNodeOneArguemnt.h"
+#include "../../inclulde/CNodeHeaders/CNodeOneArguemnt.h"
 #include <cmath>
 
 double CNodeOneArgument::evaluate() const

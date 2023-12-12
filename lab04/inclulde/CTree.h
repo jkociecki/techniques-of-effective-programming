@@ -1,8 +1,8 @@
-#include "CNode.h"
-#include "CNodeOneArguemnt.h"
-#include "CNodeTwoArguments.h"
-#include "CLeaf.h"
-#include "CVariable.h"
+#include "CNodeHeaders/CNode.h"
+#include "CNodeHeaders/CNodeOneArguemnt.h"
+#include "CNodeHeaders/CNodeTwoArguments.h"
+#include "CNodeHeaders/CLeaf.h"
+#include "CNodeHeaders/CVariable.h"
 #include <string>
 #include <vector>
 #pragma once
@@ -16,20 +16,24 @@ public:
     CTree(const std::string& expression);
     CTree(const CTree& other);
     ~CTree();
-    CNode* createTreeRecursive(std::vector<std::string>& expression, bool& ifError);
+    void initializeVariables(std::vector<std::string>& expression);
 
+    CTree operator+(const CTree& other) const;
+    CTree& operator=(const CTree& other);
+    [[nodiscard]] double evaluate() const;
+    [[nodiscard]] std::string toString() const;
+
+private:
     static bool isOperatorOneArgument(const std::string& token);
     static bool isOperatorTwoArgument(const std::string& token);
     static bool isNumber(const std::string& token);
-    void initializeVariables(CNode* root_a, std::vector<std::string>& expression);
-    CTree operator+(const CTree& other) const;
-    CTree& operator=(const CTree& other);
+
+    void initializeVariablesRecursive(CNode* root_a, std::vector<std::string>& expression);
     void createPrefix(CNode* root_a, std::string& result) const;
-    double evaluate() const;
-    static bool isVariable(CNode* cnode, const std::string& token);
+    CNode* createTreeRecursive(std::vector<std::string>& expression, bool& ifError);
 
 
-    std::string toString() const;
+
 
 
 };

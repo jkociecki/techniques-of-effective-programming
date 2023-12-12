@@ -9,7 +9,7 @@ int main()
 //    double value = tree.evaluate();
 //    std::cout << value << std::endl;
 //    std::vector<std::string> variables = {"1", "2", "3"};
-//    tree.initializeVariables(tree.root, variables);
+//    tree.initializeVariablesRecursive(tree.root, variables);
 //    std::cout << tree.evaluate() << std::endl;
 
     std::vector<std::string> variables = {"1", "2"};

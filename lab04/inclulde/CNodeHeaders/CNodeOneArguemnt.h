@@ -9,12 +9,12 @@ class CNodeOneArgument : public CNode
 private:
     CNode* child;
     std::string operatation;
-    double evaluate() const override;
-    std::string toString() const override;
+    [[nodiscard]] double evaluate() const override;
+    [[nodiscard]] std::string toString() const override;
     CNodeOneArgument(std::string op, CNode* child) : operatation(op), child(child) {};
     CNodeOneArgument(const CNodeOneArgument& other): operatation(other.operatation), child(other.child->clone()) {};
-    CNodeOneArgument* clone() const override;
-    std::vector<CNode*> getVariables() const override;
+    [[nodiscard]] CNodeOneArgument* clone() const override;
+    [[nodiscard]] std::vector<CNode*> getVariables() const override;
     ~CNodeOneArgument() override;
     friend class CTree;
 
