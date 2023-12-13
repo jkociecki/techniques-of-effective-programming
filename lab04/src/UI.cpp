@@ -1,6 +1,6 @@
 #include "../inclulde/UI.h"
 #include "../inclulde/StringUtils.h"
-#include "../inclulde/CTree.h"
+#include "../inclulde/ExpressionTree.h"
 
 void UI::run()
 {
@@ -16,7 +16,7 @@ void UI::run()
         {
             if(remainingInput.size() > 0)
             {
-                currentTree = CTree(remainingInput);
+                currentTree = ExpressionTree(remainingInput);
             }
             else std::cout << EMPTY_EXP_PROMPT << std::endl;
         }
@@ -35,7 +35,7 @@ void UI::run()
         {
             if(!remainingInput.empty())
             {
-                CTree toJoin = CTree(remainingInput);
+                ExpressionTree toJoin = ExpressionTree(remainingInput);
                 currentTree = currentTree + toJoin;
                 std::cout << currentTree.treeStructure() << std::endl;
             }

@@ -1,6 +1,6 @@
-#include "../../inclulde/CNodeHeaders/CNodeTwoArguments.h"
+#include "../../inclulde/CNodeHeaders/NodeOperatorTwoArguments.h"
 
-double CNodeTwoArguments::evaluate() const {
+double NodeOperatorTwoArguments::evaluate() const {
     double left_value = left->evaluate();
     double right_value = right->evaluate();
 
@@ -13,23 +13,23 @@ double CNodeTwoArguments::evaluate() const {
 }
 
 
-std::string CNodeTwoArguments::toString() const
+std::string NodeOperatorTwoArguments::toString() const
 {
     return operatation;
 }
 
-std::vector<CNode*> CNodeTwoArguments::getVariables() const
+std::vector<Node*> NodeOperatorTwoArguments::getVariables() const
 {
-    return std::vector<CNode*>() = {left, right};
+    return std::vector<Node*>() = {left, right};
 }
 
-CNodeTwoArguments::~CNodeTwoArguments()
+NodeOperatorTwoArguments::~NodeOperatorTwoArguments()
 {
     delete left;
     delete right;
 }
 
-CNodeTwoArguments* CNodeTwoArguments::clone() const
+NodeOperatorTwoArguments* NodeOperatorTwoArguments::clone() const
 {
-    return new CNodeTwoArguments(*this);
+    return new NodeOperatorTwoArguments(*this);
 }

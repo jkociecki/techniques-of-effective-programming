@@ -1,4 +1,4 @@
-#include "CTree.h"
+#include "ExpressionTree.h"
 
 class UI
 {
@@ -6,7 +6,7 @@ public:
     UI() = default;
     void run();
 private:
-    CTree currentTree;
+    ExpressionTree currentTree;
 
 };
 

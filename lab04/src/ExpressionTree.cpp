@@ -1,9 +1,9 @@
-#include "../inclulde/CTree.h"
+#include "../inclulde/ExpressionTree.h"
 #include <sstream>
 #include <unordered_set>
 
 
-CTree::CTree(const std::string& expression)
+ExpressionTree::ExpressionTree(const std::string& expression)
 {
     std::istringstream iss(expression);
     std::string token;
@@ -21,25 +21,25 @@ CTree::CTree(const std::string& expression)
     }
 }
 
-CTree::CTree(const CTree &other)
+ExpressionTree::ExpressionTree(const ExpressionTree &other)
 {
     root = other.root->clone();
 }
 
-double CTree::evaluate() const
+double ExpressionTree::evaluate() const
 {
     return root->evaluate();
 }
 
-CTree::~CTree()
+ExpressionTree::~ExpressionTree()
 {
     delete root;
 }
 
-void CTree::initializeVariablesRecursive(CNode* root_a, std::vector<double>& expression)
+void ExpressionTree::initializeVariablesRecursive(Node* root_a, std::vector<double>& expression)
 {
     if(root_a == nullptr) return;
-    CVariable* var = dynamic_cast<CVariable*>(root_a);
+    NodeVariable* var = dynamic_cast<NodeVariable*>(root_a);
     if(var != nullptr)
     {
         if(!expression.empty())
@@ -50,38 +50,38 @@ void CTree::initializeVariablesRecursive(CNode* root_a, std::vector<double>& exp
         }
         return;
     }
-    std::vector<CNode*> children = root_a->getVariables();
-    for(CNode* child : children)
+    std::vector<Node*> children = root_a->getVariables();
+    for(Node* child : children)
     {
         initializeVariablesRecursive(child, expression);
     }
 }
 
-void CTree::createPrefix(CNode *root_a, std::string &result) const
+void ExpressionTree::createPrefix(Node *root_a, std::string &result) const
 {
     result += " " + root_a->toString();
     if(!root_a->getVariables().empty())
     {
-        for(CNode* child : root_a->getVariables())
+        for(Node* child : root_a->getVariables())
         {
             createPrefix(child, result);
         }
     }
 }
 
-std::string CTree::toString() const
+std::string ExpressionTree::toString() const
 {
     std::string result;
     createPrefix(root, result);
     return result;
 }
 
-CNode* CTree::createTreeRecursive(std::vector<std::string>& expression, bool& ifError)
+Node* ExpressionTree::createTreeRecursive(std::vector<std::string>& expression, bool& ifError)
 {
     if (expression.empty())
     {
         ifError = false;
-        return new CLeaf(1);
+        return new NodeConstant(1);
     }
 
 
@@ -90,51 +90,51 @@ CNode* CTree::createTreeRecursive(std::vector<std::string>& expression, bool& if
 
     if (isOperatorTwoArgument(token))
     {
-        CNode* left = createTreeRecursive(expression, ifError);
-        CNode* right = createTreeRecursive(expression, ifError);
-        return new CNodeTwoArguments(token, left, right);
+        Node* left = createTreeRecursive(expression, ifError);
+        Node* right = createTreeRecursive(expression, ifError);
+        return new NodeOperatorTwoArguments(token, left, right);
     }
     else if (isOperatorOneArgument(token))
     {
-        CNode* child = createTreeRecursive(expression, ifError);
-        return new CNodeOneArgument(token, child);
+        Node* child = createTreeRecursive(expression, ifError);
+        return new NodeOperatorOneArgument(token, child);
     }
     else if (isNumber(token))
     {
-        return new CLeaf(std::stod(token));
+        return new NodeConstant(std::stod(token));
     }
     else
     {
-        return new CVariable(token, 0);
+        return new NodeVariable(token, 0);
     }
 }
 
-CTree CTree::operator+(const CTree &other) const
+ExpressionTree ExpressionTree::operator+(const ExpressionTree &other) const
 {
-    CTree result(*this);
-    CNode* parent = result.root;
-    CNode* test = nullptr;
+    ExpressionTree result(*this);
+    Node* parent = result.root;
+    Node* test = nullptr;
     while(!parent->getVariables().empty())
     {
         test = parent;
         parent = parent->getVariables()[0];
     }
 
-    if(dynamic_cast<CNodeOneArgument*>(test) != nullptr)
+    if(dynamic_cast<NodeOperatorOneArgument*>(test) != nullptr)
     {
-       auto* res = dynamic_cast<CNodeOneArgument*>(test);
+       auto* res = dynamic_cast<NodeOperatorOneArgument*>(test);
        res->child = other.root->clone();
     }
-    else if(dynamic_cast<CNodeTwoArguments*>(test) != nullptr)
+    else if(dynamic_cast<NodeOperatorTwoArguments*>(test) != nullptr)
     {
-        auto* res = dynamic_cast<CNodeTwoArguments*>(test);
+        auto* res = dynamic_cast<NodeOperatorTwoArguments*>(test);
         res->left = other.root->clone();
     }
     return result;
 }
 
 
-CTree& CTree::operator=(const CTree &other)
+ExpressionTree& ExpressionTree::operator=(const ExpressionTree &other)
 {
     if(this != &other)
     {
@@ -145,12 +145,12 @@ CTree& CTree::operator=(const CTree &other)
 }
 
 
-bool CTree::isOperatorTwoArgument(const std::string &token)
+bool ExpressionTree::isOperatorTwoArgument(const std::string &token)
 {
     return token == ADDITION || token == SUBTRACTION || token == MULTIPLICATION || token == DIVISION;
 }
 
-bool CTree::isNumber(const std::string &token)
+bool ExpressionTree::isNumber(const std::string &token)
 {
     for (char c : token)
     {
@@ -163,32 +163,32 @@ bool CTree::isNumber(const std::string &token)
 }
 
 
-bool CTree::isOperatorOneArgument(const std::string &token)
+bool ExpressionTree::isOperatorOneArgument(const std::string &token)
 {
     return token == SIN || token == COS;
 }
 
-void CTree::initializeVariables(std::vector<double> &expression)
+void ExpressionTree::initializeVariables(std::vector<double> &expression)
 {
     initializeVariablesRecursive(root, expression);
 }
 
-void CTree::createVariables(CNode *root_a, std::vector<std::string>& variables) const
+void ExpressionTree::createVariables(Node *root_a, std::vector<std::string>& variables) const
 {
     if(root_a == nullptr) return;
-    auto* var = dynamic_cast<CVariable*>(root_a);
+    auto* var = dynamic_cast<NodeVariable*>(root_a);
     if(var != nullptr)
     {
         variables.push_back(var->toString());
         return;
     }
-    for(CNode* child : root_a->getVariables())
+    for(Node* child : root_a->getVariables())
     {
         createVariables(child, variables);
     }
 }
 
-std::string CTree::varsToString() const
+std::string ExpressionTree::varsToString() const
 {
     std::vector<std::string> vars;
     std::unordered_set<std::string> vars_set;
@@ -205,7 +205,7 @@ std::string CTree::varsToString() const
     return result;
 }
 
-int CTree::getVariablesCount() const
+int ExpressionTree::getVariablesCount() const
 {
     std::vector<std::string> vars;
     std::unordered_set<std::string> vars_set;
@@ -217,7 +217,7 @@ int CTree::getVariablesCount() const
     return vars_set.size();
 }
 
-void CTree::printTreeStructureRecursive(CNode *root_a, int level, std::string &result) const
+void ExpressionTree::printTreeStructureRecursive(Node *root_a, int level, std::string &result) const
 {
     if(root_a != nullptr)
     {
@@ -226,14 +226,14 @@ void CTree::printTreeStructureRecursive(CNode *root_a, int level, std::string &r
             result += "  ";
         }
         result += "|--" + root_a->toString() + "\n";
-        for(CNode* child : root_a->getVariables())
+        for(Node* child : root_a->getVariables())
         {
             printTreeStructureRecursive(child, level + 1, result);
         }
     }
 }
 
-std::string CTree::treeStructure() const
+std::string ExpressionTree::treeStructure() const
 {
     std::string result;
     printTreeStructureRecursive(root, 0, result);

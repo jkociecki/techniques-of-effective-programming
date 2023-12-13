@@ -1,7 +1,7 @@
-#include "../../inclulde/CNodeHeaders/CNodeOneArguemnt.h"
+#include "../../inclulde/CNodeHeaders/NodeOperatorOneArgument.h"
 #include <cmath>
 
-double CNodeOneArgument::evaluate() const
+double NodeOperatorOneArgument::evaluate() const
 {
     double child_value = child->evaluate();
     if(operatation == SIN) return sin(child_value);
@@ -9,22 +9,22 @@ double CNodeOneArgument::evaluate() const
     return 0;
 }
 
-std::string CNodeOneArgument::toString() const
+std::string NodeOperatorOneArgument::toString() const
 {
     return operatation;
 }
 
-std::vector<CNode*> CNodeOneArgument::getVariables() const
+std::vector<Node*> NodeOperatorOneArgument::getVariables() const
 {
-    return std::vector<CNode*>() = {child};
+    return std::vector<Node*>() = {child};
 }
 
-CNodeOneArgument::~CNodeOneArgument()
+NodeOperatorOneArgument::~NodeOperatorOneArgument()
 {
     delete child;
 }
 
-CNodeOneArgument* CNodeOneArgument::clone() const
+NodeOperatorOneArgument* NodeOperatorOneArgument::clone() const
 {
-    return new CNodeOneArgument(*this);
+    return new NodeOperatorOneArgument(*this);
 }
