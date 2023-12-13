@@ -4,10 +4,10 @@ double CNodeTwoArguments::evaluate() const {
     double left_value = left->evaluate();
     double right_value = right->evaluate();
 
-    if (operatation == "+") return left_value + right_value;
-    if (operatation == "-") return left_value - right_value;
-    if (operatation == "*") return left_value * right_value;
-    if (operatation == "/") return left_value / right_value;
+    if (operatation == ADDITION) return left_value + right_value;
+    if (operatation == SUBTRACTION) return left_value - right_value;
+    if (operatation == MULTIPLICATION) return left_value * right_value;
+    if (operatation == DIVISION) return left_value / right_value;
 
     return 0;
 }

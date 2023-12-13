@@ -12,3 +12,10 @@ public:
     virtual ~CNode() = default;
 };
 
+const std::string ADDITION = "+";
+const std::string SUBTRACTION = "-";
+const std::string MULTIPLICATION = "*";
+const std::string DIVISION = "/";
+const std::string SIN = "sin";
+const std::string COS = "cos";
+

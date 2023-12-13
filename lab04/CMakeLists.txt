@@ -16,4 +16,10 @@ add_executable(
         src/CTree.cpp
         inclulde/CNodeHeaders/CVariable.h
         src/CNodeSource/CVariable.cpp
+        src/UI.cpp
+        inclulde/UI.h
+        inclulde/UI.h
+        inclulde/StringUtils.h
+        src/StringUtils.cpp
+        src/UI.cpp
 )

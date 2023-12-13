@@ -1,5 +1,6 @@
 #include "../inclulde/CTree.h"
 #include <sstream>
+#include <unordered_set>
 
 
 CTree::CTree(const std::string& expression)
@@ -35,7 +36,7 @@ CTree::~CTree()
     delete root;
 }
 
-void CTree::initializeVariablesRecursive(CNode* root_a, std::vector<std::string> &expression)
+void CTree::initializeVariablesRecursive(CNode* root_a, std::vector<double>& expression)
 {
     if(root_a == nullptr) return;
     CVariable* var = dynamic_cast<CVariable*>(root_a);
@@ -43,11 +44,9 @@ void CTree::initializeVariablesRecursive(CNode* root_a, std::vector<std::string>
     {
         if(!expression.empty())
         {
-            std::string token = expression.front();
+            double token = expression.front();
             expression.erase(expression.begin());
-            std::stringstream ss(token);
-            double value = std::stod(token);
-            var->value = value;
+            var->value = token;
         }
         return;
     }
@@ -123,12 +122,12 @@ CTree CTree::operator+(const CTree &other) const
 
     if(dynamic_cast<CNodeOneArgument*>(test) != nullptr)
     {
-       CNodeOneArgument* res = dynamic_cast<CNodeOneArgument*>(test);
+       auto* res = dynamic_cast<CNodeOneArgument*>(test);
        res->child = other.root->clone();
     }
     else if(dynamic_cast<CNodeTwoArguments*>(test) != nullptr)
     {
-        CNodeTwoArguments* res = dynamic_cast<CNodeTwoArguments*>(test);
+        auto* res = dynamic_cast<CNodeTwoArguments*>(test);
         res->left = other.root->clone();
     }
     return result;
@@ -148,7 +147,7 @@ CTree& CTree::operator=(const CTree &other)
 
 bool CTree::isOperatorTwoArgument(const std::string &token)
 {
-    return token == "+" || token == "-" || token == "*" || token == "/";
+    return token == ADDITION || token == SUBTRACTION || token == MULTIPLICATION || token == DIVISION;
 }
 
 bool CTree::isNumber(const std::string &token)
@@ -166,12 +165,79 @@ bool CTree::isNumber(const std::string &token)
 
 bool CTree::isOperatorOneArgument(const std::string &token)
 {
-    return token == "sin" || token == "cos";
+    return token == SIN || token == COS;
 }
 
-void CTree::initializeVariables(std::vector<std::string> &expression)
+void CTree::initializeVariables(std::vector<double> &expression)
 {
     initializeVariablesRecursive(root, expression);
+}
+
+void CTree::createVariables(CNode *root_a, std::vector<std::string>& variables) const
+{
+    if(root_a == nullptr) return;
+    auto* var = dynamic_cast<CVariable*>(root_a);
+    if(var != nullptr)
+    {
+        variables.push_back(var->toString());
+        return;
+    }
+    for(CNode* child : root_a->getVariables())
+    {
+        createVariables(child, variables);
+    }
+}
+
+std::string CTree::varsToString() const
+{
+    std::vector<std::string> vars;
+    std::unordered_set<std::string> vars_set;
+    createVariables(root, vars);
+    for(const auto & var : vars)
+    {
+        vars_set.insert(var);
+    }
+    std::string result;
+    for(const std::string& var : vars)
+    {
+        result += var + " ";
+    }
+    return result;
+}
+
+int CTree::getVariablesCount() const
+{
+    std::vector<std::string> vars;
+    std::unordered_set<std::string> vars_set;
+    createVariables(root, vars);
+    for(const auto & var : vars)
+    {
+        vars_set.insert(var);
+    }
+    return vars_set.size();
+}
+
+void CTree::printTreeStructureRecursive(CNode *root_a, int level, std::string &result) const
+{
+    if(root_a != nullptr)
+    {
+        for(int i = 0; i < level; ++i)
+        {
+            result += "  ";
+        }
+        result += "|--" + root_a->toString() + "\n";
+        for(CNode* child : root_a->getVariables())
+        {
+            printTreeStructureRecursive(child, level + 1, result);
+        }
+    }
+}
+
+std::string CTree::treeStructure() const
+{
+    std::string result;
+    printTreeStructureRecursive(root, 0, result);
+    return result;
 }
 
 
