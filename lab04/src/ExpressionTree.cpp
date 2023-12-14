@@ -39,7 +39,7 @@ ExpressionTree::~ExpressionTree()
 void ExpressionTree::initializeVariablesRecursive(Node* root_a, std::vector<double>& expression)
 {
     if(root_a == nullptr) return;
-    NodeVariable* var = dynamic_cast<NodeVariable*>(root_a);
+    auto* var = dynamic_cast<NodeVariable*>(root_a);
     if(var != nullptr)
     {
         if(!expression.empty())
@@ -84,7 +84,6 @@ Node* ExpressionTree::createTreeRecursive(std::vector<std::string>& expression, 
         return new NodeConstant(1);
     }
 
-
     std::string token = expression.front();
     expression.erase(expression.begin());
 
@@ -109,25 +108,26 @@ Node* ExpressionTree::createTreeRecursive(std::vector<std::string>& expression, 
     }
 }
 
+//TODO: moze dodac virtualna metode set child
 ExpressionTree ExpressionTree::operator+(const ExpressionTree &other) const
 {
     ExpressionTree result(*this);
-    Node* parent = result.root;
-    Node* test = nullptr;
-    while(!parent->getVariables().empty())
+    Node* leaf = result.root;
+    Node* parent_of_leaf = nullptr;
+    while(!leaf->getVariables().empty())
     {
-        test = parent;
-        parent = parent->getVariables()[0];
+        parent_of_leaf = leaf;
+        leaf = leaf->getVariables()[0];
     }
 
-    if(dynamic_cast<NodeOperatorOneArgument*>(test) != nullptr)
+    if(dynamic_cast<NodeOperatorOneArgument*>(parent_of_leaf) != nullptr)
     {
-       auto* res = dynamic_cast<NodeOperatorOneArgument*>(test);
+       auto* res = dynamic_cast<NodeOperatorOneArgument*>(parent_of_leaf);
        res->child = other.root->clone();
     }
-    else if(dynamic_cast<NodeOperatorTwoArguments*>(test) != nullptr)
+    else if(dynamic_cast<NodeOperatorTwoArguments*>(parent_of_leaf) != nullptr)
     {
-        auto* res = dynamic_cast<NodeOperatorTwoArguments*>(test);
+        auto* res = dynamic_cast<NodeOperatorTwoArguments*>(parent_of_leaf);
         res->left = other.root->clone();
     }
     return result;

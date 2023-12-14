@@ -20,9 +20,9 @@ public:
     ~ExpressionTree();
     void initializeVariables(std::vector<double>& expression);
 
-
     ExpressionTree operator+(const ExpressionTree& other) const;
     ExpressionTree& operator=(const ExpressionTree& other);
+
     [[nodiscard]] double evaluate() const;
     [[nodiscard]] int getVariablesCount() const;
     [[nodiscard]] std::string toString() const;
@@ -39,11 +39,6 @@ private:
     void createVariables(Node* root_a, std::vector<std::string>& variables) const;
     void printTreeStructureRecursive(Node* root_a, int level, std::string& result) const;
     Node* createTreeRecursive(std::vector<std::string>& expression, bool& ifError);
-
-
-
-
-
 };
 
 

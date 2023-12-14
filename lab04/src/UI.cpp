@@ -18,7 +18,7 @@ void UI::run()
             {
                 currentTree = ExpressionTree(remainingInput);
             }
-            else std::cout << EMPTY_EXP_PROMPT << std::endl;
+            else std::cout << EMPTY_EXP_PROMPT;
         }
 
         else if(command == VARS)
@@ -45,7 +45,6 @@ void UI::run()
         else if(command == COMP)
         {
             std::vector<std::string> evaluation = split_by_whitespace(remainingInput);
-            std::cout << evaluation.size() << " = " << currentTree.getVariablesCount() << std::endl;
             if(!evaluation.empty() && currentTree.getVariablesCount() == evaluation.size())
             {
                 std::vector<double> values;
@@ -69,7 +68,7 @@ void UI::run()
 
         else std::cout << INVALID_CMD_PROMPT << std::endl;
 
-        std::cout << STARTING_CMD << std::endl;
+        std::cout << STARTING_CMD;
         std::getline(std::cin, input);
         extractFirstWord(input, command, remainingInput);
 
