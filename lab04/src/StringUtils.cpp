@@ -26,7 +26,7 @@ void extractFirstWord(const std::string& input, std::string& command, std::strin
     std::istringstream iss(input);
     iss >> command;
     std::getline(iss, remainingInput);
-    remainingInput = remainingInput.substr(1);
+    if(!remainingInput.empty()) remainingInput = remainingInput.substr(1);
 }
 
 std::string operator*(const std::string& str1, const std::string& str2)

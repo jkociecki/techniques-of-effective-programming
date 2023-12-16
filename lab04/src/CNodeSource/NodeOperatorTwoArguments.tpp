@@ -33,6 +33,7 @@ NodeOperatorTwoArguments<T>* NodeOperatorTwoArguments<T>::clone() const
 }
 
 template<typename T>
-std::vector<Node<T> *> NodeOperatorTwoArguments<T>::getVariables() const {
+std::vector<Node<T> *> NodeOperatorTwoArguments<T>::getVariables() const
+{
     return std::vector<Node<T> *>() = {left, right};
 }

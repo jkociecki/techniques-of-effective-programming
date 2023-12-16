@@ -11,12 +11,10 @@ add_executable(
         inclulde/CNodeHeaders/NodeConstant.h
         inclulde/ExpressionTree.h
         inclulde/CNodeHeaders/NodeVariable.h
-        src/UI.cpp
         inclulde/UI.h
         inclulde/UI.h
         inclulde/StringUtils.h
         src/StringUtils.cpp
-        src/UI.cpp
         src/CNodeSource/NodeConstant.tpp
         src/CNodeSource/NodeOperatorOneArgument.tpp
         src/CNodeSource/NodeOperatorTwoArguments.tpp
