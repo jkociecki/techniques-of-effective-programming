@@ -22,13 +22,5 @@ protected:
     template<typename> friend class ExpressionTree;
 };
 
-template<typename T>
-T NodeOperatorOneArgument<T>::evaluate() const
-{
-    double child_value = child->evaluate();
-    if(operatation == SIN) return sin(child_value);
-    if(operatation == COS) return cos(child_value);
-    return 0;
-}
 
 #include "../../src/CNodeSource/NodeOperatorOneArgument.tpp"

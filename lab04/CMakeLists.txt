@@ -22,4 +22,5 @@ add_executable(
         src/CNodeSource/NodeOperatorTwoArguments.tpp
         src/CNodeSource/NodeVariable.tpp
         src/ExpressionTree.tpp
+        src/UI.tpp
 )

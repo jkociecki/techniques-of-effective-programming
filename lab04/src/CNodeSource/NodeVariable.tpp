@@ -11,11 +11,10 @@ std::string NodeVariable<T>::toString() const
 }
 
 template<typename T>
-std::vector<Node<T>*> NodeVariable<T>::getVariables() const
-{
-    return {};
-
+std::vector<Node<T> *> NodeVariable<T>::getVariables() const {
+    return std::vector<Node<T> *>();
 }
+
 
 template<typename T>
 NodeVariable<T>* NodeVariable<T>::clone() const

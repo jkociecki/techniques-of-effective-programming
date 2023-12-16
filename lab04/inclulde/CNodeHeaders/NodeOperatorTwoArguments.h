@@ -20,4 +20,5 @@ protected:
             : operatation(other.operatation), left(other.left->clone()), right(other.right->clone()) {};
 };
 
+
 #include "../../src/CNodeSource/NodeOperatorTwoArguments.tpp"

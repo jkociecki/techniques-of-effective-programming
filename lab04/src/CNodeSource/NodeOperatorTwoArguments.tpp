@@ -1,7 +1,9 @@
+#include "../../inclulde/StringUtils.h"
+
 template<typename T>
 T NodeOperatorTwoArguments<T>::evaluate() const {
-    double left_value = left->evaluate();
-    double right_value = right->evaluate();
+    T left_value = left->evaluate();
+    T right_value = right->evaluate();
 
     if (operatation == ADDITION) return left_value + right_value;
     if (operatation == SUBTRACTION) return left_value - right_value;
@@ -18,12 +20,6 @@ std::string NodeOperatorTwoArguments<T>::toString() const
 }
 
 template<typename T>
-std::vector<Node<T>*> NodeOperatorTwoArguments<T>::getVariables() const
-{
-    return std::vector<Node<T>*>() = {left, right};
-}
-
-template<typename T>
 NodeOperatorTwoArguments<T>::~NodeOperatorTwoArguments()
 {
     delete left;
@@ -34,4 +30,9 @@ template<typename T>
 NodeOperatorTwoArguments<T>* NodeOperatorTwoArguments<T>::clone() const
 {
     return new NodeOperatorTwoArguments(*this);
+}
+
+template<typename T>
+std::vector<Node<T> *> NodeOperatorTwoArguments<T>::getVariables() const {
+    return std::vector<Node<T> *>() = {left, right};
 }

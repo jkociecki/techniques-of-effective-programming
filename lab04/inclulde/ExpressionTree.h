@@ -21,10 +21,10 @@ public:
     ExpressionTree(const std::string& expression);
     ExpressionTree(const ExpressionTree& other);
     ~ExpressionTree();
-    void initializeVariables(std::vector<double>& expression);
+    void initializeVariables(std::vector<T>& expression);
 
     ExpressionTree operator+(const ExpressionTree& other) const;
-    ExpressionTree& operator=(const ExpressionTree& other);
+    ExpressionTree& operator=(ExpressionTree<T> other);
 
     [[nodiscard]] T evaluate() const;
     [[nodiscard]] int getVariablesCount() const;
@@ -37,7 +37,7 @@ private:
     static bool isOperatorTwoArgument(const std::string& token);
     static bool isNumber(const std::string& token);
 
-    void initializeVariablesRecursive(Node<T>* root_a, std::vector<double>& expression);
+    void initializeVariablesRecursive(Node<T>* root_a, std::vector<T>& expression);
     void createPrefix(Node<T>* root_a, std::string& result) const;
     void createVariables(Node<T>* root_a, std::vector<std::string>& variables) const;
     void printTreeStructureRecursive(Node<T>* root_a, int level, std::string& result) const;

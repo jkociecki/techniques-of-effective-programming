@@ -6,7 +6,7 @@ template<typename T> class NodeConstant : public Node<T>
 {
 protected:
     T value;
-    NodeConstant(double value) : value(value) {};
+    NodeConstant(T value) : value(value) {};
     NodeConstant(const NodeConstant& other) : value(other.value) {};
     T evaluate() const override;
     [[nodiscard]] std::string toString() const override;
