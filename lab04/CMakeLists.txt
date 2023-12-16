@@ -10,7 +10,6 @@ add_executable(
         inclulde/CNodeHeaders/NodeOperatorTwoArguments.h
         inclulde/CNodeHeaders/NodeConstant.h
         inclulde/ExpressionTree.h
-        src/ExpressionTree.cpp
         inclulde/CNodeHeaders/NodeVariable.h
         src/UI.cpp
         inclulde/UI.h
@@ -18,9 +17,9 @@ add_executable(
         inclulde/StringUtils.h
         src/StringUtils.cpp
         src/UI.cpp
-        src/ExpressionTree.cpp
         src/CNodeSource/NodeConstant.tpp
         src/CNodeSource/NodeOperatorOneArgument.tpp
         src/CNodeSource/NodeOperatorTwoArguments.tpp
         src/CNodeSource/NodeVariable.tpp
+        src/ExpressionTree.tpp
 )
