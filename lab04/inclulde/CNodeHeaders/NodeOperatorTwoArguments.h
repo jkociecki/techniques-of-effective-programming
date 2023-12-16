@@ -2,23 +2,22 @@
 #include "Node.h"
 #pragma once
 
-
-class NodeOperatorTwoArguments : public Node
+template<typename T>
+class NodeOperatorTwoArguments : public Node<T>
 {
-private:
-    Node* left;
-    Node* right;
+protected:
+    Node<T>* left;
+    Node<T>* right;
     std::string operatation;
-    [[nodiscard]] double evaluate() const override;
+    [[nodiscard]] T evaluate() const override;
     [[nodiscard]] std::string toString() const override;
-    NodeOperatorTwoArguments(std::string op, Node* left, Node* right) : operatation(op), left(left), right(right) {};
-    NodeOperatorTwoArguments(const NodeOperatorTwoArguments& other)
-    : operatation(other.operatation), left(other.left->clone()), right(other.right->clone()) {};
+    NodeOperatorTwoArguments(std::string op, Node<T>* left, Node<T>* right) : operatation(op), left(left), right(right) {};
     [[nodiscard]] NodeOperatorTwoArguments* clone() const override;
-    [[nodiscard]] std::vector<Node*> getVariables() const override;
+    [[nodiscard]] std::vector<Node<T>*> getVariables() const override;
     ~NodeOperatorTwoArguments() override;
-    friend class ExpressionTree;
-
-
+    template<typename> friend class ExpressionTree;
+    NodeOperatorTwoArguments(const NodeOperatorTwoArguments& other)
+            : operatation(other.operatation), left(other.left->clone()), right(other.right->clone()) {};
 };
 
+#include "../../src/CNodeSource/NodeOperatorTwoArguments.tpp"

@@ -2,18 +2,18 @@
 #pragma once
 
 
-class NodeConstant : public Node
+template<typename T> class NodeConstant : public Node<T>
 {
-private:
-    double value;
+protected:
+    T value;
     NodeConstant(double value) : value(value) {};
     NodeConstant(const NodeConstant& other) : value(other.value) {};
-    double evaluate() const override;
+    T evaluate() const override;
     [[nodiscard]] std::string toString() const override;
-    [[nodiscard]] std::vector<Node*> getVariables() const override;
+    [[nodiscard]] std::vector<Node<T>*> getVariables() const override;
     ~NodeConstant() override = default;
     [[nodiscard]] NodeConstant* clone() const override;
-    friend class ExpressionTree;
-
+    template<typename> friend class ExpressionTree;
 };
 
+#include "../../src/CNodeSource/NodeConstant.tpp"

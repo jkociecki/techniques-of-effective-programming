@@ -5,15 +5,17 @@
 
 int main()
 {
-    UI ui{};
-    ui.run();
-//    std::string expression = "+ * 5 sin x * + a b 8";
-//    ExpressionTree tree(expression);
-//    double value = tree.evaluate();
-//    std::cout << value << std::endl;
-//    std::vector<std::string> variables = {"1", "2", "3"};
-//    tree.initializeVariablesRecursive(tree.root, variables);
-//    std::cout << tree.evaluate() << std::endl;
+    //UI ui{};
+    //ui.run();
+
+
+    std::string expression = "+ * 5 sin x * + a b 8";
+    ExpressionTree<float> tree(expression);
+    double value = tree.evaluate();
+    std::cout << value << std::endl;
+    std::vector<double> variables = {1.0f, 2.1f, 3.3f};
+    tree.initializeVariables(variables);
+    std::cout << tree.evaluate() << std::endl;
 
 //    std::vector<std::string> variables = {"1", "2"};
 //

@@ -55,35 +55,11 @@ build CMakeFiles/lab04.dir/main.cpp.obj: CXX_COMPILER__lab04_unscanned_Debug C$:
   OBJECT_DIR = CMakeFiles\lab04.dir
   OBJECT_FILE_DIR = CMakeFiles\lab04.dir
 
-build CMakeFiles/lab04.dir/src/CNodeSource/CNodeOneArgument.cpp.obj: CXX_COMPILER__lab04_unscanned_Debug C$:/Users/Flex$ 5$ IIL/OneDrive/Desktop/studia/semestr$ 3/TEP/lab04/src/CNodeSource/CNodeOneArgument.cpp || cmake_object_order_depends_target_lab04
-  DEP_FILE = CMakeFiles\lab04.dir\src\CNodeSource\CNodeOneArgument.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\lab04.dir
-  OBJECT_FILE_DIR = CMakeFiles\lab04.dir\src\CNodeSource
-
-build CMakeFiles/lab04.dir/src/CNodeSource/NodeOperatorTwoArguments.cpp.obj: CXX_COMPILER__lab04_unscanned_Debug C$:/Users/Flex$ 5$ IIL/OneDrive/Desktop/studia/semestr$ 3/TEP/lab04/src/CNodeSource/NodeOperatorTwoArguments.cpp || cmake_object_order_depends_target_lab04
-  DEP_FILE = CMakeFiles\lab04.dir\src\CNodeSource\NodeOperatorTwoArguments.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\lab04.dir
-  OBJECT_FILE_DIR = CMakeFiles\lab04.dir\src\CNodeSource
-
-build CMakeFiles/lab04.dir/src/CNodeSource/NodeConstant.cpp.obj: CXX_COMPILER__lab04_unscanned_Debug C$:/Users/Flex$ 5$ IIL/OneDrive/Desktop/studia/semestr$ 3/TEP/lab04/src/CNodeSource/NodeConstant.cpp || cmake_object_order_depends_target_lab04
-  DEP_FILE = CMakeFiles\lab04.dir\src\CNodeSource\NodeConstant.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\lab04.dir
-  OBJECT_FILE_DIR = CMakeFiles\lab04.dir\src\CNodeSource
-
 build CMakeFiles/lab04.dir/src/ExpressionTree.cpp.obj: CXX_COMPILER__lab04_unscanned_Debug C$:/Users/Flex$ 5$ IIL/OneDrive/Desktop/studia/semestr$ 3/TEP/lab04/src/ExpressionTree.cpp || cmake_object_order_depends_target_lab04
   DEP_FILE = CMakeFiles\lab04.dir\src\ExpressionTree.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\lab04.dir
   OBJECT_FILE_DIR = CMakeFiles\lab04.dir\src
-
-build CMakeFiles/lab04.dir/src/CNodeSource/NodeVariable.cpp.obj: CXX_COMPILER__lab04_unscanned_Debug C$:/Users/Flex$ 5$ IIL/OneDrive/Desktop/studia/semestr$ 3/TEP/lab04/src/CNodeSource/NodeVariable.cpp || cmake_object_order_depends_target_lab04
-  DEP_FILE = CMakeFiles\lab04.dir\src\CNodeSource\NodeVariable.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\lab04.dir
-  OBJECT_FILE_DIR = CMakeFiles\lab04.dir\src\CNodeSource
 
 build CMakeFiles/lab04.dir/src/UI.cpp.obj: CXX_COMPILER__lab04_unscanned_Debug C$:/Users/Flex$ 5$ IIL/OneDrive/Desktop/studia/semestr$ 3/TEP/lab04/src/UI.cpp || cmake_object_order_depends_target_lab04
   DEP_FILE = CMakeFiles\lab04.dir\src\UI.cpp.obj.d
@@ -105,7 +81,7 @@ build CMakeFiles/lab04.dir/src/StringUtils.cpp.obj: CXX_COMPILER__lab04_unscanne
 #############################################
 # Link the executable lab04.exe
 
-build lab04.exe: CXX_EXECUTABLE_LINKER__lab04_Debug CMakeFiles/lab04.dir/main.cpp.obj CMakeFiles/lab04.dir/src/CNodeSource/CNodeOneArgument.cpp.obj CMakeFiles/lab04.dir/src/CNodeSource/NodeOperatorTwoArguments.cpp.obj CMakeFiles/lab04.dir/src/CNodeSource/NodeConstant.cpp.obj CMakeFiles/lab04.dir/src/ExpressionTree.cpp.obj CMakeFiles/lab04.dir/src/CNodeSource/NodeVariable.cpp.obj CMakeFiles/lab04.dir/src/UI.cpp.obj CMakeFiles/lab04.dir/src/StringUtils.cpp.obj
+build lab04.exe: CXX_EXECUTABLE_LINKER__lab04_Debug CMakeFiles/lab04.dir/main.cpp.obj CMakeFiles/lab04.dir/src/ExpressionTree.cpp.obj CMakeFiles/lab04.dir/src/UI.cpp.obj CMakeFiles/lab04.dir/src/StringUtils.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\lab04.dir
