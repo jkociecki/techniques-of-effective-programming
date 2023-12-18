@@ -12,12 +12,6 @@ std::string NodeConstant<T>::toString() const
     return std::to_string(value);
 }
 
-template<>
-std::string NodeConstant<std::string>::toString() const
-{
-    return value;
-}
-
 template<typename T>
 std::vector<Node<T>*> NodeConstant<T>::getVariables() const
 {
@@ -28,4 +22,10 @@ template<typename T>
 NodeConstant<T>* NodeConstant<T>::clone() const
 {
     return new NodeConstant(*this);
+}
+
+template<>
+std::string NodeConstant<std::string>::toString() const
+{
+    return value;
 }

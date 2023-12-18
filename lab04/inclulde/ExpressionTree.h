@@ -5,6 +5,7 @@
 #include "CNodeHeaders/NodeVariable.h"
 #include <string>
 #include <vector>
+#include <unordered_map>
 #include <set>
 #include <sstream>
 #include <unordered_set>
@@ -21,10 +22,12 @@ public:
     ExpressionTree(const std::string& expression);
     ExpressionTree(const ExpressionTree& other);
     ~ExpressionTree();
-    void initializeVariables(std::vector<T>& expression);
+    void initializeVariables(std::unordered_map<std::string,T>& expression);
 
     ExpressionTree operator+(const ExpressionTree& other) const;
     ExpressionTree& operator=(ExpressionTree<T> other);
+
+    bool isEmpty() const;
 
     [[nodiscard]] T evaluate() const;
     [[nodiscard]] int getVariablesCount() const;
@@ -37,7 +40,7 @@ private:
     static bool isOperatorTwoArgument(const std::string& token);
     static bool isNumber(const std::string& token);
 
-    void initializeVariablesRecursive(Node<T>* root_a, std::vector<T>& expression);
+    void initializeVariablesRecursive(Node<T>* root_a, std::unordered_map<std::string,T>& expression);
     void createPrefix(Node<T>* root_a, std::string& result) const;
     void createVariables(Node<T>* root_a, std::vector<std::string>& variables) const;
     void printTreeStructureRecursive(Node<T>* root_a, int level, std::string& result) const;

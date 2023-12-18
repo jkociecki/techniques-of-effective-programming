@@ -1,3 +1,7 @@
+#include <set>
+#include <algorithm>
+
+
 template<typename T>
 ExpressionTree<T>::ExpressionTree(const std::string& expression)
 {
@@ -27,7 +31,8 @@ ExpressionTree<T>::ExpressionTree(const ExpressionTree<T> &other)
 template<typename T>
 T ExpressionTree<T>::evaluate() const
 {
-    return root->evaluate();
+    if(root != nullptr) return root->evaluate();
+    else return 0;
 }
 
 template<typename T>
@@ -37,7 +42,7 @@ ExpressionTree<T>::~ExpressionTree()
 }
 
 template<typename T>
-void ExpressionTree<T>::initializeVariablesRecursive(Node<T>* root_a, std::vector<T>& expression)
+void ExpressionTree<T>::initializeVariablesRecursive(Node<T>* root_a, std::unordered_map<std::string, T>& expression)
 {
     if(root_a == nullptr) return;
     auto* var = dynamic_cast<NodeVariable<T>*>(root_a);
@@ -45,9 +50,8 @@ void ExpressionTree<T>::initializeVariablesRecursive(Node<T>* root_a, std::vecto
     {
         if(!expression.empty())
         {
-            T token = expression.front();
-            expression.erase(expression.begin());
-            var->value = token;
+            auto it = expression.find(var->toString());
+            if(it != expression.end()) var->value = it->second;
         }
         return;
     }
@@ -74,6 +78,7 @@ void ExpressionTree<T>::createPrefix(Node<T> *root_a, std::string &result) const
 template<typename T>
 std::string ExpressionTree<T>::toString() const
 {
+    if(root == nullptr) return "";
     std::string result;
     createPrefix(root, result);
     return result;
@@ -115,6 +120,7 @@ Node<T>* ExpressionTree<T>::createTreeRecursive(std::vector<std::string>& expres
 template<typename T>
 ExpressionTree<T> ExpressionTree<T>::operator+(const ExpressionTree<T> &other) const
 {
+    if(root == nullptr) return other;
     ExpressionTree result(*this);
     Node<T>* leaf = result.root;
     Node<T>* parent_of_leaf = nullptr;
@@ -127,11 +133,13 @@ ExpressionTree<T> ExpressionTree<T>::operator+(const ExpressionTree<T> &other) c
     if(dynamic_cast<NodeOperatorOneArgument<T>*>(parent_of_leaf) != nullptr)
     {
         auto* res = dynamic_cast<NodeOperatorOneArgument<T>*>(parent_of_leaf);
+        delete res->child;
         res->child = other.root->clone();
     }
     else if(dynamic_cast<NodeOperatorTwoArguments<T>*>(parent_of_leaf) != nullptr)
     {
         auto* res = dynamic_cast<NodeOperatorTwoArguments<T>*>(parent_of_leaf);
+        delete res->left;
         res->left = other.root->clone();
     }
     return result;
@@ -154,19 +162,6 @@ bool ExpressionTree<T>::isOperatorTwoArgument(const std::string &token)
     return token == ADDITION || token == SUBTRACTION || token == MULTIPLICATION || token == DIVISION;
 }
 
-template<typename T>
-bool ExpressionTree<T>::isNumber(const std::string &token)
-{
-    for (char c : token)
-    {
-        if (!isdigit(c))
-        {
-            return false;
-        }
-    }
-    return true;
-}
-
 template<>
 bool ExpressionTree<std::string>::isNumber(const std::string &token)
 {
@@ -185,9 +180,9 @@ bool ExpressionTree<T>::isOperatorOneArgument(const std::string &token)
 }
 
 template<typename T>
-void ExpressionTree<T>::initializeVariables(std::vector<T> &expression)
+void ExpressionTree<T>::initializeVariables(std::unordered_map<std::string,T> &expression)
 {
-    initializeVariablesRecursive(root, expression);
+    if(root != nullptr) initializeVariablesRecursive(root, expression);
 }
 
 
@@ -210,33 +205,26 @@ void ExpressionTree<T>::createVariables(Node<T>* root_a, std::vector<std::string
 template<typename T>
 std::string ExpressionTree<T>::varsToString() const
 {
+    if(root == nullptr) return "";
     std::vector<std::string> vars;
-    std::unordered_set<std::string> vars_set;
     createVariables(root, vars);
-    for(const auto & var : vars)
-    {
-        vars_set.insert(var);
-    }
+    vars.erase(std::unique(vars.begin(), vars.end()), vars.end());
     std::string result;
-    for(const std::string& var : vars)
-    {
-        result += var + " ";
-    }
+    for(const std::string& var : vars) result += var + " ";
+    if (!result.empty()) result.pop_back();
     return result;
 }
 
 template<typename T>
 int ExpressionTree<T>::getVariablesCount() const
 {
+    if (root == nullptr) return 0;
     std::vector<std::string> vars;
-    std::unordered_set<std::string> vars_set;
     createVariables(root, vars);
-    for(const auto & var : vars)
-    {
-        vars_set.insert(var);
-    }
+    std::unordered_set<std::string> vars_set(vars.begin(), vars.end());
     return vars_set.size();
 }
+
 
 template<typename T>
 void ExpressionTree<T>::printTreeStructureRecursive(Node<T>* root_a, int level, std::string &result) const
@@ -258,13 +246,52 @@ void ExpressionTree<T>::printTreeStructureRecursive(Node<T>* root_a, int level, 
 template<typename T>
 std::string ExpressionTree<T>::treeStructure() const
 {
+    if(root == nullptr) return "";
     std::string result;
     printTreeStructureRecursive(root, 0, result);
     return result;
 }
 
+template<typename T>
+bool ExpressionTree<T>::isEmpty() const
+{
+    return root == nullptr;
+}
+
+template<typename T>
+bool ExpressionTree<T>::isNumber(const std::string& token)
+{
+    if (token.empty())
+        return false;
+
+    bool hasDot = false;
+
+    for (char c : token)
+    {
+        if (!std::isdigit(c))
+        {
+            if (c == '.' && !hasDot)
+            {
+                hasDot = true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
+template<>
+bool ExpressionTree<int>::isNumber(const std::string& token)
+{
+    return std::all_of(token.begin(), token.end(), ::isdigit);
+}
+
 
 template<>
 Node<std::string>* ExpressionTree<std::string>::createTreeRecursive(std::vector<std::string>& expression, bool& ifError)

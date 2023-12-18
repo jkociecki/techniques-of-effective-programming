@@ -5,8 +5,6 @@
 
 int main()
 {
-    UI<std::string> ui;
+    UI<int> ui;
     ui.run();
-
-
 }
