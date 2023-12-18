@@ -9,8 +9,8 @@ public:
     [[nodiscard]] virtual T evaluate() const = 0;
     [[nodiscard]] virtual std::string toString() const = 0;
     [[nodiscard]] virtual std::vector<Node<T>*> getVariables() const = 0;
-    virtual ~Node() = default;
     [[nodiscard]] virtual Node<T>* clone() const = 0;
+    virtual ~Node() = default;
 };
 
 const std::string ADDITION = "+";

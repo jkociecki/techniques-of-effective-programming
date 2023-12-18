@@ -208,12 +208,18 @@ std::string ExpressionTree<T>::varsToString() const
     if(root == nullptr) return "";
     std::vector<std::string> vars;
     createVariables(root, vars);
-    vars.erase(std::unique(vars.begin(), vars.end()), vars.end());
+    std::set<std::string> uniqueVars;
     std::string result;
-    for(const std::string& var : vars) result += var + " ";
+    for(const std::string& var : vars) {
+        if(uniqueVars.find(var) == uniqueVars.end()) {
+            result += var + " ";
+            uniqueVars.insert(var);
+        }
+    }
     if (!result.empty()) result.pop_back();
     return result;
 }
+
 
 template<typename T>
 int ExpressionTree<T>::getVariablesCount() const

@@ -134,7 +134,7 @@ void UI<std::string>::handleComp(std::string remainingInput)
     std::string keys = currentTree.varsToString();
     std::vector <std::string> variables = split_by_whitespace(keys);
     std::unordered_map<std::string, std::string> valuesOfVars;
-    if(!evaluation.empty() && currentTree.getVariablesCount() == evaluation.size() && !currentTree.isEmpty())
+    if(!evaluation.empty() && currentTree.getVariablesCount() == evaluation.size() && !currentTree.isEmpty() && remainingInput != "")
     {
         for(int i = 0; i < variables.size(); i++)
         {
