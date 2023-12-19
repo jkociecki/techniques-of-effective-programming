@@ -9,7 +9,7 @@
 template<typename T>
 class NodeOperatorOneArgument : public Node<T>
 {
-protected:
+private:
     Node<T>* child;
     std::string operatation;
     [[nodiscard]] T evaluate() const override;

@@ -25,7 +25,7 @@ NodeConstant<T>* NodeConstant<T>::clone() const
 }
 
 template<>
-std::string NodeConstant<std::string>::toString() const
+inline std::string NodeConstant<std::string>::toString() const
 {
-    return value;
+    return "\"" + value + "\"";
 }

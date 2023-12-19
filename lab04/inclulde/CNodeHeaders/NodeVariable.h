@@ -2,10 +2,11 @@
 #include <iostream>
 #pragma once
 
+
 template<typename T>
 class NodeVariable : public Node<T>
 {
-protected:
+private:
     std::string name;
     T value;
     [[nodiscard]] T evaluate() const override;

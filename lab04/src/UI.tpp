@@ -21,22 +21,27 @@ void UI<T>::run()
         else if(command == VARS)
         {
             handleVars();
+            remainingInput = "";
         }
         else if(command == PRINT)
         {
             handlePrint();
+            remainingInput = "";
         }
         else if(command == COMP)
         {
             handleComp(remainingInput);
+            remainingInput = "";
         }
         else if(command == JOIN)
         {
             handleJoin(remainingInput);
+            remainingInput = "";
         }
         else if(command == SWITCH)
         {
             handleTypes();
+            remainingInput = "";
         }
 
         else std::cout << INVALID_CMD_PROMPT << std::endl;
@@ -142,6 +147,7 @@ void UI<std::string>::handleComp(std::string remainingInput)
         }
         currentTree.initializeVariables(valuesOfVars);
         std::cout << RESULT <<currentTree.evaluate() << std::endl;
+        remainingInput = "";
     }
     else if(currentTree.getVariablesCount() == 0 && !currentTree.isEmpty()) std::cout << RESULT <<currentTree.evaluate() << std::endl;
     else std :: cout << CHECK_VARS_PROMPT << std::endl;

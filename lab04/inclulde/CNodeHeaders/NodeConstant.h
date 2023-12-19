@@ -4,7 +4,7 @@
 
 template<typename T> class NodeConstant : public Node<T>
 {
-protected:
+private:
     T value;
     NodeConstant(T value) : value(value) {};
     NodeConstant(const NodeConstant& other) : value(other.value) {};

@@ -22,7 +22,10 @@ const std::string STARTING_PROMPT = "AVAILABLE COMMANDS: \n"
                                     "PRINT - prints the expression tree in prefix notation \n"
                                     "COMP <value1> <value2> ... - computes the expression tree with the given values \n"
                                     "JOIN <expression> - joins the current expression tree with the given expression tree \n"
-                                    "EXIT - exits the program \n";
+                                    "EXIT - exits the program \n"
+                                    "SWITCH - switches the type of the expression tree \n";
+
+
 
 template<typename T> class UI
 {

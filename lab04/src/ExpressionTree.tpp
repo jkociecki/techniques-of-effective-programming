@@ -162,16 +162,6 @@ bool ExpressionTree<T>::isOperatorTwoArgument(const std::string &token)
     return token == ADDITION || token == SUBTRACTION || token == MULTIPLICATION || token == DIVISION;
 }
 
-template<>
-bool ExpressionTree<std::string>::isNumber(const std::string &token)
-{
-    if(token[0] == '\"' && token[token.size() - 1] == '\"')
-    {
-        return true;
-    }
-    else return false;
-}
-
 
 template<typename T>
 bool ExpressionTree<T>::isOperatorOneArgument(const std::string &token)
@@ -267,8 +257,7 @@ bool ExpressionTree<T>::isEmpty() const
 template<typename T>
 bool ExpressionTree<T>::isNumber(const std::string& token)
 {
-    if (token.empty())
-        return false;
+    if (token.empty()) return false;
 
     bool hasDot = false;
 
@@ -293,14 +282,24 @@ bool ExpressionTree<T>::isNumber(const std::string& token)
 
 ////////////////////////////////////////////////////////////////////////////////////////
 template<>
-bool ExpressionTree<int>::isNumber(const std::string& token)
+inline bool ExpressionTree<int>::isNumber(const std::string& token)
 {
     return std::all_of(token.begin(), token.end(), ::isdigit);
 }
 
 
 template<>
-Node<std::string>* ExpressionTree<std::string>::createTreeRecursive(std::vector<std::string>& expression, bool& ifError)
+inline bool ExpressionTree<std::string>::isNumber(const std::string &token)
+{
+    if(token[0] == '\"' && token[token.size() - 1] == '\"')
+    {
+        return true;
+    }
+    else return false;
+}
+
+template<>
+inline Node<std::string>* ExpressionTree<std::string>::createTreeRecursive(std::vector<std::string>& expression, bool& ifError)
 {
     if (expression.empty())
     {

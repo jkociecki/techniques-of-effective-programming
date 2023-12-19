@@ -5,7 +5,7 @@
 template<typename T>
 class NodeOperatorTwoArguments : public Node<T>
 {
-protected:
+private:
     Node<T>* left;
     Node<T>* right;
     std::string operatation;
