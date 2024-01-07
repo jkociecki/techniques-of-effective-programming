@@ -1,5 +1,5 @@
-#include "NodeConstant.h"
-#include "NodeOperatorOneArgument.h"
+#include "../../inclulde/CNodeHeaders/NodeConstant.h"
+#include "../../inclulde/CNodeHeaders/NodeOperatorOneArgument.h"
 
 
 template<>
