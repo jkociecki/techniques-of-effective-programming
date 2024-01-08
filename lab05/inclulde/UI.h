@@ -1,4 +1,4 @@
-#include "ExpressionTree.h"
+#include "ExpressionTree/ExpressionTree.h"
 #include "StringUtils.h"
 const std::string ENTER = "enter";
 const std::string VARS = "vars";
@@ -42,4 +42,4 @@ private:
 ExpressionTree<T> currentTree;
 };
 
-#include "../src/UI.tpp"
+#include "UI.tpp"

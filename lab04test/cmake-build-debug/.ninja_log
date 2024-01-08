@@ -1,0 +1,21 @@
+# ninja log v5
+576	753	7240940730931849	lab03dziedzic.exe	3c543fb214bfc256
+8	2306	7246985394139416	CMakeFiles/lab04test.dir/main.cpp.obj	b26cc62d0893856d
+11	100	7246967027822347	CMakeFiles/lab04test.dir/inclulde/CNodeHeaders/NodeOperatorTwoArguments.cpp.obj	3763d06045e0cde9
+1	360	7246988795244641	build.ninja	d428b1883f6744cd
+2340	3104	7246931108736773	lab04.exe	8776c9b09e06921
+6	717	7246965788602715	CMakeFiles/lab04test.dir/src/StringUtils.cpp.obj	fdcd5b87124ceecd
+2306	3021	7246985401324920	lab04test.exe	4c4e78a54e7e234f
+12	848	7246976204335676	CMakeFiles/lab04test.dir/inclulde/CNodeHeaders/NodeOperatorOneArgument.cpp.obj	d032aac069a07019
+11	733	7246978134632968	CMakeFiles/lab04test.dir/inclulde/CNodeHeaders/Nodes.cpp.obj	800cbd7c1e316e2c
+3	1314	7246985384329955	CMakeFiles/lab04test.dir/src/CNodeSource/ExpressionTree.cpp.obj	62e113ba8168e66
+13	792	7246985379099774	CMakeFiles/lab04test.dir/src/CNodeSource/Nodes.cpp.obj	6e6183f75bef8328
+4	1068	7246989151359013	CMakeFiles/lab04test.dir/src/CNodeSource/ExpressionTree.cpp.obj	62e113ba8168e66
+1068	1724	7246989157884201	lab04test.exe	4c4e78a54e7e234f
+4	1052	7246989667915099	CMakeFiles/lab04test.dir/src/CNodeSource/ExpressionTree.cpp.obj	62e113ba8168e66
+1053	1682	7246989674181159	lab04test.exe	4c4e78a54e7e234f
+13	1185	7246992299010171	CMakeFiles/lab04test.dir/src/CNodeSource/ExpressionTree.cpp.obj	62e113ba8168e66
+4	1359	7246992300738187	CMakeFiles/lab04test.dir/main.cpp.obj	b26cc62d0893856d
+1360	1643	7246992303489678	lab04test.exe	4c4e78a54e7e234f
+5	1826	7246998610568979	CMakeFiles/lab04test.dir/main.cpp.obj	b26cc62d0893856d
+1827	2438	7246998616679033	lab04test.exe	4c4e78a54e7e234f

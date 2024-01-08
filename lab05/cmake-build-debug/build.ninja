@@ -61,11 +61,11 @@ build CMakeFiles/lab05.dir/src/StringUtils.cpp.obj: CXX_COMPILER__lab05_unscanne
   OBJECT_DIR = CMakeFiles\lab05.dir
   OBJECT_FILE_DIR = CMakeFiles\lab05.dir\src
 
-build CMakeFiles/lab05.dir/src/ReferenceCounter.cpp.obj: CXX_COMPILER__lab05_unscanned_Debug C$:/Users/Flex$ 5$ IIL/OneDrive/Desktop/studia/semestr$ 3/TEP/lab05/src/ReferenceCounter.cpp || cmake_object_order_depends_target_lab05
-  DEP_FILE = CMakeFiles\lab05.dir\src\ReferenceCounter.cpp.obj.d
+build CMakeFiles/lab05.dir/my-pointer/ReferenceCounter.cpp.obj: CXX_COMPILER__lab05_unscanned_Debug C$:/Users/Flex$ 5$ IIL/OneDrive/Desktop/studia/semestr$ 3/TEP/lab05/my-pointer/ReferenceCounter.cpp || cmake_object_order_depends_target_lab05
+  DEP_FILE = CMakeFiles\lab05.dir\my-pointer\ReferenceCounter.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\lab05.dir
-  OBJECT_FILE_DIR = CMakeFiles\lab05.dir\src
+  OBJECT_FILE_DIR = CMakeFiles\lab05.dir\my-pointer
 
 
 # =============================================================================
@@ -75,7 +75,7 @@ build CMakeFiles/lab05.dir/src/ReferenceCounter.cpp.obj: CXX_COMPILER__lab05_uns
 #############################################
 # Link the executable lab05.exe
 
-build lab05.exe: CXX_EXECUTABLE_LINKER__lab05_Debug CMakeFiles/lab05.dir/main.cpp.obj CMakeFiles/lab05.dir/src/StringUtils.cpp.obj CMakeFiles/lab05.dir/src/ReferenceCounter.cpp.obj
+build lab05.exe: CXX_EXECUTABLE_LINKER__lab05_Debug CMakeFiles/lab05.dir/main.cpp.obj CMakeFiles/lab05.dir/src/StringUtils.cpp.obj CMakeFiles/lab05.dir/my-pointer/ReferenceCounter.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\lab05.dir
