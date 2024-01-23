@@ -1,4 +1,4 @@
-#include "../inclulde/StringUtils.h"
+#include "../include/StringUtils.h"
 #include <sstream>
 
 std::vector<std::string> split_by_whitespace(std::string& str)

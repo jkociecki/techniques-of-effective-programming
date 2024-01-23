@@ -12,7 +12,6 @@ public:
     SmartPointer<T>& operator=(const SmartPointer<T>& obj);
     T& operator*();
     T* operator->();
-
 private:
     T* pointer;
     ReferenceCounter* counter;
